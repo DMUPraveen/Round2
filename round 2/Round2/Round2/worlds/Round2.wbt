@@ -1,0 +1,108 @@
+#VRML_SIM R2019a utf8
+WorldInfo {
+  basicTimeStep 16
+}
+Viewpoint {
+  orientation -0.617621791286931 0.7699546290154397 0.1603533354352806 0.6100458451135186
+  position 1.5810713295303624 1.4794963792140106 3.0478827538838633
+  follow "KBOT"
+}
+TexturedBackground {
+}
+TexturedBackgroundLight {
+}
+RectangleArena {
+  floorSize 10 10
+  floorTileSize 1 1
+  wallHeight 0.3
+}
+Youbot {
+  name "KBOT"
+  controller "my_controllerC"
+  supervisor TRUE
+  bodySlot [
+    DEF TR Transform {
+      translation 0.25 0 0.05
+      rotation 1 0 0 1.572
+      children [
+        RangeFinder {
+          translation 0.04 -0.03 0
+          rotation 0 1 0 -1.572
+          children [
+            Shape {
+              appearance Appearance {
+                material Material {
+                  diffuseColor 1 0 0
+                }
+              }
+              geometry Box {
+                size 0.05 0.05 0.05
+              }
+            }
+          ]
+          fieldOfView 1
+          width 256
+          height 256
+        }
+        Camera {
+          translation 0.04 -0.08000000000000002 0
+          rotation 0 1 0 -1.57
+          children [
+            Shape {
+              appearance Appearance {
+                material Material {
+                  diffuseColor 1 1 0
+                }
+              }
+              geometry Box {
+                size 0.05 0.05 0.05
+              }
+            }
+          ]
+          fieldOfView 0.3
+          width 80
+          height 60
+        }
+      ]
+    }
+  ]
+}
+DEF KKB0 Solid {
+  translation -1 0 0
+  children [
+    DEF BShape Shape {
+      appearance Appearance {
+        material Material {
+          diffuseColor 0 1 0
+        }
+      }
+      geometry Box {
+        size 0.08 0.08 0.08
+      }
+    }
+  ]
+  boundingObject USE BShape
+  physics Physics {
+  }
+}
+DEF KKB1 Solid {
+  translation -1 0 0
+  children [
+    USE BShape
+  ]
+  name "solid(1)"
+  boundingObject USE BShape
+  physics Physics {
+  }
+}
+DEF KKB2 Solid {
+  translation -1 0 0
+  children [
+    USE BShape
+  ]
+  name "solid(2)"
+  boundingObject USE BShape
+  physics Physics {
+  }
+}
+
