@@ -51,7 +51,7 @@ int main(int argc, char **argv) {
   
   // initialization: obstacle-boxes
   int i, j;
-  int no_boxes = 2;
+  int no_boxes = 50;
   WbNodeRef KKboxes[no_boxes];
   char Obs_names[no_boxes][6];
   char tmp[3];
