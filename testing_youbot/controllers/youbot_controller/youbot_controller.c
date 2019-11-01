@@ -1,5 +1,6 @@
 
 #include <webots/robot.h>
+#include <webots/range_finder.h>
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -32,9 +33,21 @@ void wait(float time){
 }
 int main(int argc, char **argv) {
   wb_robot_init();
+  WbDeviceTag range_finder;
+  range_finder = wb_robot_get_device("range-finder"); 
+  wb_range_finder_enable(range_finder,32);
   
   arm_init();
   //wait(3.0);
+  arm_ik(0.26,0.12,0);
+  wait(3);
+  for(float i = 0.26;i <0.28; i+=0.001){
+  arm_ik(i,0.12,0);
+  printf("%f \n",i);
+  step();
+  wait(1);
+  
+  }
   while (1) {
   step();
   
