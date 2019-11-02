@@ -1,0 +1,108 @@
+#VRML_SIM R2019b utf8
+WorldInfo {
+}
+Viewpoint {
+  orientation -0.5395731645516337 0.827056555852262 0.1576015657204259 0.6379420331106243
+  position 2.713173802405344 1.091697346546637 3.161609912905705
+}
+TexturedBackground {
+}
+DEF KKB0 Solid {
+  translation -0.5718559999999999 0.0399 -0.16877399999999998
+  rotation -4.704874444024876e-09 1 -9.532831586914734e-12 -0.12153454694104895
+  children [
+    DEF BShape Shape {
+      appearance Appearance {
+        material Material {
+          diffuseColor 0 1 0
+        }
+      }
+      geometry Box {
+        size 0.08 0.08 0.08
+      }
+    }
+  ]
+  boundingObject USE BShape
+  physics Physics {
+  }
+}
+DEF KKB0 Solid {
+  translation 0.051523 0.0399 0.08870199999999999
+  rotation -4.704874444024876e-09 1 -9.532831586914734e-12 -0.12153454694104895
+  children [
+    DEF BShape Shape {
+      appearance Appearance {
+        material Material {
+          diffuseColor 0 1 0
+        }
+      }
+      geometry Box {
+        size 0.08 0.08 0.08
+      }
+    }
+  ]
+  name "solid(1)"
+  boundingObject USE BShape
+  physics Physics {
+  }
+}
+RectangleArena {
+  floorSize 100 100
+}
+Youbot {
+  translation 1.468284 0.12 -0.029016
+  rotation 0 0.707108281185553 0.70710528118436 -3.1415923071795864
+  controller "youbot_controller"
+  bodySlot [
+    Display {
+      width 100
+      height 100
+    }
+    DEF TR Transform {
+      translation 0.25 0 0.05
+      rotation 1 0 0 1.572
+      children [
+        RangeFinder {
+          translation 0.04 -0.03 0
+          rotation 0 1 0 -1.572
+          children [
+            Shape {
+              appearance Appearance {
+                material Material {
+                  diffuseColor 1 0 0
+                }
+              }
+              geometry Box {
+                size 0.05 0.05 0.05
+              }
+            }
+          ]
+          fieldOfView 1
+          width 256
+          height 256
+        }
+        Camera {
+          translation 0.04 -0.08000000000000002 0
+          rotation 0 1 0 -1.57
+          children [
+            Shape {
+              appearance Appearance {
+                material Material {
+                  diffuseColor 1 1 0
+                }
+              }
+              geometry Box {
+                size 0.05 0.05 0.05
+              }
+            }
+          ]
+          fieldOfView 0.3
+          width 100
+          height 100
+        }
+      ]
+    }
+  ]
+}
+TexturedBackgroundLight {
+}
