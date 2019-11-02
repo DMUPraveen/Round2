@@ -16,15 +16,105 @@
 #include <time.h>
 
 
-#define TIME_STEP 16
+#define TIME_STEP 32
 
 enum BLOB_TYPE { RED, GREEN, BLUE, NONE };
 typedef enum { SEARCHING, MOVING } states;
 
+enum MOVES{
+FORWARD,
+BACKWARD,
+TURNR,
+TURNL,
+TAP,
+UNTAP,
+};
+
+
+void step(){
+  if(wb_robot_step(TIME_STEP) == -1) {
+  exit(0);
+  }
+}
+
+
+
+
+void wait(float t){
+  float initial = wb_robot_get_time();
+
+  while(wb_robot_get_time() - initial < t){
+    step();
+  }
+  }
+
+
+void print_instructions(){
+char *message = "You can the Drive and control the robot using the following keys(Remember to cick the 3D view first):\nA : Turn Left\nD : Turn Right\nW : Go Forward\nS : Go Backward\nQ : Strafe Left\nE : Strafe Right\nT : Tap\nU : Untap\n";
+printf(message);
+}  
+void tap(){
+arm_ik(0.2,0.10,0);
+//wait(2);
+}
+void untap(){
+arm_ik(0.2,0.13,0);
+//wwait(2);
+}
+
+void keyboard_control(int key_control){
+
+  switch(key_control){
+  case 68:
+    //base_reset();
+   // step();
+    base_turn_left();
+    printf("turn left \n");
+    break;
+   case 87:
+     base_forwards();
+     printf("go forward \n");
+     break;
+   case 65:
+     //base_reset();
+     //step();
+     base_turn_right();
+     printf("turn right \n");
+     break;
+   case 83:
+     base_backwards();
+     printf("go backward \n");
+     break;
+   case 84:
+     //base_reset();
+     tap();
+     printf("tap \n");
+     break;
+   case 85:
+     //base_reset();
+     untap();
+     printf("untap \n");
+     break;
+   case 66:
+     base_reset();
+     printf("stop");
+     break;
+   case 81:
+     base_strafe_left();
+     printf("strafe left \n");
+     break;
+   case 69:
+     base_strafe_right();
+     printf("strafe right \n");    
+     break;
+  }
+  
+}
 
 int main(int argc, char **argv) {
   // initialization: robot
   wb_robot_init();
+  wb_keyboard_enable(TIME_STEP);
   int pause_counter = 0;
   
   // initialization: range finder
@@ -78,8 +168,8 @@ int main(int argc, char **argv) {
   base_init();
   arm_init();
   gripper_init();
-  
   // Main loop
+  print_instructions();
   while (wb_robot_step(TIME_STEP) != -1) {
     // collection of range-finder and camera images
     const float *rfimage = wb_range_finder_get_range_image(range_finder);
@@ -90,6 +180,7 @@ int main(int argc, char **argv) {
     the start of the simulation*/
     for (i = 0; i < no_boxes && wb_robot_get_time()>2.0; i++) {
       int ct = wb_supervisor_node_get_number_of_contact_points(KKboxes[i]);
+      //printf("%d %d \n",ct, count);
       if (ct >0){
         WbFieldRef tr = wb_supervisor_node_get_field(KKboxes[i], "translation");
         //teleport boxes to underworld ;-)  ----disapper
@@ -97,72 +188,13 @@ int main(int argc, char **argv) {
         wb_supervisor_field_set_sf_vec3f(tr, values[i]);
       }
     }
-    
-    /*==================================================
-      example code for color detection using camera and
-      simple control algorithm for stoping and steering away*/
-    if (pause_counter > 0)
-      pause_counter--;
-    /*
-     * Case 1
-     * A blob was found recently
-     * The robot waits in front of it until pause_counter
-     * is decremented enough
-     */
-    if (pause_counter > 50) {
-      base_reset();
-    }
-    /*
-     * Case 2
-     * A blob was found quite recently
-     * The robot begins to turn but don't analyse the image for a while,
-     * otherwise the same blob would be found again
-     */
-    else if (pause_counter > 0) {
-      base_turn_left();
-    }
-    /*
-     * Case 3
-     * The robot turns and analyse the camera image in order
-     * to find a new blob
-     */
-    else {  // pause_counter == 0  
-      red = 0;
-      green = 0;
-      blue = 0;
-    
-      for (i = width / 3; i < 2 * width / 3; i++) {
-        for (j = height / 2; j < 3 * height / 4; j++) {
-          red += wb_camera_image_get_red(image, width, i, j);
-          blue += wb_camera_image_get_blue(image, width, i, j);
-          green += wb_camera_image_get_green(image, width, i, j);
-        }
-      }
-    
-      if ((red > 3 * green) && (red > 3 * blue))
-        current_blob = RED;
-      else if ((green > 3 * red) && (green > 3 * blue))
-        current_blob = GREEN;
-      else if ((blue > 3 * red) && (blue > 3 * green))
-        current_blob = BLUE;
-      else
-        current_blob = NONE;
-
-    
-      if (current_blob == NONE) {
-        base_turn_left();
-      }
-      /*
-       * Case 3b
-       * A blob is detected
-       * the robot stops, stores the image, and changes its state
-       */
-      else {
-        base_reset();// stoping robot
-        pause_counter = 100;
-      }
-    }     
+   int key = wb_keyboard_get_key();
+   if( key != -1){
+   keyboard_control(key);   
+   }
+   
   }
+  
   wb_robot_cleanup();
   return 0;
 }

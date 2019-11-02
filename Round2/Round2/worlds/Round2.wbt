@@ -1,11 +1,36 @@
-#VRML_SIM R2019a utf8
+#VRML_SIM R2019b utf8
 WorldInfo {
   basicTimeStep 16
+  contactProperties [
+    ContactProperties {
+      material1 "InteriorWheelMat"
+      coulombFriction [
+        1.8, 0, 0.2
+      ]
+      frictionRotation -0.965 0
+      bounce 0
+      forceDependentSlip [
+        10, 0
+      ]
+    }
+    ContactProperties {
+      material1 "ExteriorWheelMat"
+      coulombFriction [
+        1.8, 0, 0.2
+      ]
+      frictionRotation 0.965 0
+      bounce 0
+      forceDependentSlip [
+        10, 0
+      ]
+    }
+  ]
 }
 Viewpoint {
-  orientation -0.617621791286931 0.7699546290154397 0.1603533354352806 0.6100458451135186
-  position 1.5810713295303624 1.4794963792140106 3.0478827538838633
+  orientation 0 1 0 4.71238898038469
+  position -1.8023603661956558 0.06820164083378781 1.2627561040403701e-05
   follow "KBOT"
+  followOrientation TRUE
 }
 TexturedBackground {
 }
@@ -18,7 +43,7 @@ RectangleArena {
 }
 Youbot {
   name "KBOT"
-  controller "my_controllerC"
+  controller "new"
   supervisor TRUE
   bodySlot [
     DEF TR Transform {
@@ -86,9 +111,19 @@ DEF KKB0 Solid {
   }
 }
 DEF KKB1 Solid {
-  translation -1 0 0
+  translation 2.9999987820200564 0.3190720320255707 -3.6999999549155893
+  rotation 0.00014610289994260327 0.9999910900580523 0.004218821926871097 0.004762989384730731
   children [
-    USE BShape
+    DEF BShape Shape {
+      appearance Appearance {
+        material Material {
+          diffuseColor 0 1 0
+        }
+      }
+      geometry Box {
+        size 0.08 0.08 0.08
+      }
+    }
   ]
   name "solid(1)"
   boundingObject USE BShape
@@ -96,481 +131,21 @@ DEF KKB1 Solid {
   }
 }
 DEF KKB2 Solid {
-  translation -1 0 0
+  translation 2.5000000106237614 0.06350591987142601 -0.3000000006938675
+  rotation -1.0135603650095532e-08 0.9999999999999867 -1.6196350268822634e-07 0.005440818693770963
   children [
-    USE BShape
+    DEF BShape Shape {
+      appearance Appearance {
+        material Material {
+          diffuseColor 0 1 0
+        }
+      }
+      geometry Box {
+        size 0.08 0.08 0.08
+      }
+    }
   ]
   name "solid(2)"
-  boundingObject USE BShape
-  physics Physics {
-  }
-}
-DEF KKB3 Solid {
-  translation -1 0 0
-  children [
-    USE BShape
-  ]
-  name "solid(3)"
-  boundingObject USE BShape
-  physics Physics {
-  }
-}
-DEF KKB4 Solid {
-  translation -1 0 0
-  children [
-    USE BShape
-  ]
-  name "solid(4)"
-  boundingObject USE BShape
-  physics Physics {
-  }
-}
-DEF KKB5 Solid {
-  translation -1 0 0
-  children [
-    USE BShape
-  ]
-  name "solid(5)"
-  boundingObject USE BShape
-  physics Physics {
-  }
-}
-DEF KKB6 Solid {
-  translation -1 0 0
-  children [
-    USE BShape
-  ]
-  name "solid(6)"
-  boundingObject USE BShape
-  physics Physics {
-  }
-}
-DEF KKB7 Solid {
-  translation -1 0 0
-  children [
-    USE BShape
-  ]
-  name "solid(7)"
-  boundingObject USE BShape
-  physics Physics {
-  }
-}
-DEF KKB8 Solid {
-  translation -1 0 0
-  children [
-    USE BShape
-  ]
-  name "solid(8)"
-  boundingObject USE BShape
-  physics Physics {
-  }
-}
-DEF KKB9 Solid {
-  translation -1 0 0
-  children [
-    USE BShape
-  ]
-  name "solid(9)"
-  boundingObject USE BShape
-  physics Physics {
-  }
-}
-DEF KKB10 Solid {
-  translation -1 0 0
-  children [
-    USE BShape
-  ]
-  name "solid(10)"
-  boundingObject USE BShape
-  physics Physics {
-  }
-}
-DEF KKB11 Solid {
-  translation -1 0 0
-  children [
-    USE BShape
-  ]
-  name "solid(11)"
-  boundingObject USE BShape
-  physics Physics {
-  }
-}
-DEF KKB12 Solid {
-  translation -1 0 0
-  children [
-    USE BShape
-  ]
-  name "solid(12)"
-  boundingObject USE BShape
-  physics Physics {
-  }
-}
-DEF KKB13 Solid {
-  translation -1 0 0
-  children [
-    USE BShape
-  ]
-  name "solid(13)"
-  boundingObject USE BShape
-  physics Physics {
-  }
-}
-DEF KKB14 Solid {
-  translation -1 0 0
-  children [
-    USE BShape
-  ]
-  name "solid(14)"
-  boundingObject USE BShape
-  physics Physics {
-  }
-}
-DEF KKB15 Solid {
-  translation -1 0 0
-  children [
-    USE BShape
-  ]
-  name "solid(15)"
-  boundingObject USE BShape
-  physics Physics {
-  }
-}
-DEF KKB16 Solid {
-  translation -1 0 0
-  children [
-    USE BShape
-  ]
-  name "solid(16)"
-  boundingObject USE BShape
-  physics Physics {
-  }
-}
-DEF KKB17 Solid {
-  translation -1 0 0
-  children [
-    USE BShape
-  ]
-  name "solid(17)"
-  boundingObject USE BShape
-  physics Physics {
-  }
-}
-DEF KKB18 Solid {
-  translation -1 0 0
-  children [
-    USE BShape
-  ]
-  name "solid(18)"
-  boundingObject USE BShape
-  physics Physics {
-  }
-}
-DEF KKB19 Solid {
-  translation -1 0 0
-  children [
-    USE BShape
-  ]
-  name "solid(19)"
-  boundingObject USE BShape
-  physics Physics {
-  }
-}
-DEF KKB20 Solid {
-  translation -1 0 0
-  children [
-    USE BShape
-  ]
-  name "solid(20)"
-  boundingObject USE BShape
-  physics Physics {
-  }
-}
-DEF KKB21 Solid {
-  translation -1 0 0
-  children [
-    USE BShape
-  ]
-  name "solid(21)"
-  boundingObject USE BShape
-  physics Physics {
-  }
-}
-DEF KKB22 Solid {
-  translation -1 0 0
-  children [
-    USE BShape
-  ]
-  name "solid(22)"
-  boundingObject USE BShape
-  physics Physics {
-  }
-}
-DEF KKB23 Solid {
-  translation -1 0 0
-  children [
-    USE BShape
-  ]
-  name "solid(23)"
-  boundingObject USE BShape
-  physics Physics {
-  }
-}
-DEF KKB24 Solid {
-  translation -1 0 0
-  children [
-    USE BShape
-  ]
-  name "solid(24)"
-  boundingObject USE BShape
-  physics Physics {
-  }
-}
-DEF KKB25 Solid {
-  translation -1 0 0
-  children [
-    USE BShape
-  ]
-  name "solid(25)"
-  boundingObject USE BShape
-  physics Physics {
-  }
-}
-DEF KKB26 Solid {
-  translation -1 0 0
-  children [
-    USE BShape
-  ]
-  name "solid(26)"
-  boundingObject USE BShape
-  physics Physics {
-  }
-}
-DEF KKB27 Solid {
-  translation -1 0 0
-  children [
-    USE BShape
-  ]
-  name "solid(27)"
-  boundingObject USE BShape
-  physics Physics {
-  }
-}
-DEF KKB28 Solid {
-  translation -1 0 0
-  children [
-    USE BShape
-  ]
-  name "solid(28)"
-  boundingObject USE BShape
-  physics Physics {
-  }
-}
-DEF KKB29 Solid {
-  translation -1 0 0
-  children [
-    USE BShape
-  ]
-  name "solid(29)"
-  boundingObject USE BShape
-  physics Physics {
-  }
-}
-DEF KKB30 Solid {
-  translation -1 0 0
-  children [
-    USE BShape
-  ]
-  name "solid(30)"
-  boundingObject USE BShape
-  physics Physics {
-  }
-}
-DEF KKB31 Solid {
-  translation -1 0 0
-  children [
-    USE BShape
-  ]
-  name "solid(31)"
-  boundingObject USE BShape
-  physics Physics {
-  }
-}
-DEF KKB32 Solid {
-  translation -1 0 0
-  children [
-    USE BShape
-  ]
-  name "solid(32)"
-  boundingObject USE BShape
-  physics Physics {
-  }
-}
-DEF KKB33 Solid {
-  translation -1 0 0
-  children [
-    USE BShape
-  ]
-  name "solid(33)"
-  boundingObject USE BShape
-  physics Physics {
-  }
-}
-DEF KKB34 Solid {
-  translation -1 0 0
-  children [
-    USE BShape
-  ]
-  name "solid(34)"
-  boundingObject USE BShape
-  physics Physics {
-  }
-}
-DEF KKB35 Solid {
-  translation -1 0 0
-  children [
-    USE BShape
-  ]
-  name "solid(35)"
-  boundingObject USE BShape
-  physics Physics {
-  }
-}
-DEF KKB36 Solid {
-  translation -1 0 0
-  children [
-    USE BShape
-  ]
-  name "solid(36)"
-  boundingObject USE BShape
-  physics Physics {
-  }
-}
-DEF KKB37 Solid {
-  translation -1 0 0
-  children [
-    USE BShape
-  ]
-  name "solid(37)"
-  boundingObject USE BShape
-  physics Physics {
-  }
-}
-DEF KKB38 Solid {
-  translation -1 0 0
-  children [
-    USE BShape
-  ]
-  name "solid(38)"
-  boundingObject USE BShape
-  physics Physics {
-  }
-}
-DEF KKB39 Solid {
-  translation -1 0 0
-  children [
-    USE BShape
-  ]
-  name "solid(39)"
-  boundingObject USE BShape
-  physics Physics {
-  }
-}
-DEF KKB40 Solid {
-  translation -1 0 0
-  children [
-    USE BShape
-  ]
-  name "solid(40)"
-  boundingObject USE BShape
-  physics Physics {
-  }
-}
-DEF KKB41 Solid {
-  translation -1 0 0
-  children [
-    USE BShape
-  ]
-  name "solid(41)"
-  boundingObject USE BShape
-  physics Physics {
-  }
-}
-DEF KKB42 Solid {
-  translation -1 0 0
-  children [
-    USE BShape
-  ]
-  name "solid(42)"
-  boundingObject USE BShape
-  physics Physics {
-  }
-}
-DEF KKB43 Solid {
-  translation -1 0 0
-  children [
-    USE BShape
-  ]
-  name "solid(43)"
-  boundingObject USE BShape
-  physics Physics {
-  }
-}
-DEF KKB44 Solid {
-  translation -1 0 0
-  children [
-    USE BShape
-  ]
-  name "solid(44)"
-  boundingObject USE BShape
-  physics Physics {
-  }
-}
-DEF KKB45 Solid {
-  translation -1 0 0
-  children [
-    USE BShape
-  ]
-  name "solid(45)"
-  boundingObject USE BShape
-  physics Physics {
-  }
-}
-DEF KKB46 Solid {
-  translation -1 0 0
-  children [
-    USE BShape
-  ]
-  name "solid(46)"
-  boundingObject USE BShape
-  physics Physics {
-  }
-}
-DEF KKB47 Solid {
-  translation -1 0 0
-  children [
-    USE BShape
-  ]
-  name "solid(47)"
-  boundingObject USE BShape
-  physics Physics {
-  }
-}
-DEF KKB48 Solid {
-  translation -1 0 0
-  children [
-    USE BShape
-  ]
-  name "solid(48)"
-  boundingObject USE BShape
-  physics Physics {
-  }
-}
-DEF KKB49 Solid {
-  translation -1 0 0
-  children [
-    USE BShape
-  ]
-  name "solid(49)"
   boundingObject USE BShape
   physics Physics {
   }
