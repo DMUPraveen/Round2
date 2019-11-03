@@ -1,0 +1,156 @@
+#VRML_SIM R2019b utf8
+WorldInfo {
+  basicTimeStep 16
+  contactProperties [
+    ContactProperties {
+      material1 "InteriorWheelMat"
+      coulombFriction [
+        1.8, 0, 0.2
+      ]
+      frictionRotation -0.965 0
+      bounce 0
+      forceDependentSlip [
+        10, 0
+      ]
+    }
+    ContactProperties {
+      material1 "ExteriorWheelMat"
+      coulombFriction [
+        1.8, 0, 0.2
+      ]
+      frictionRotation 0.965 0
+      bounce 0
+      forceDependentSlip [
+        10, 0
+      ]
+    }
+  ]
+}
+Viewpoint {
+  orientation 0 1 0 4.71238898038469
+  position -1.8023603661956558 0.06820164083378781 1.2627561040403701e-05
+  follow "KBOT"
+  followOrientation TRUE
+}
+TexturedBackground {
+}
+TexturedBackgroundLight {
+}
+RectangleArena {
+  floorSize 10 10
+  floorTileSize 1 1
+  wallHeight 0.3
+}
+Youbot {
+  name "KBOT"
+  controller "challenge"
+  supervisor TRUE
+  bodySlot [
+    Display {
+      width 80
+      height 80
+    }
+    DEF TR Transform {
+      translation 0.25 0 0.05
+      rotation 1 0 0 1.572
+      children [
+        RangeFinder {
+          translation 0.04 -0.03 0
+          rotation 0 1 0 -1.572
+          children [
+            Shape {
+              appearance Appearance {
+                material Material {
+                  diffuseColor 1 0 0
+                }
+              }
+              geometry Box {
+                size 0.05 0.05 0.05
+              }
+            }
+          ]
+          fieldOfView 1
+          width 256
+          height 256
+        }
+        Camera {
+          translation 0.04 -0.08 0
+          rotation 0 1 0 -1.57
+          children [
+            Shape {
+              appearance Appearance {
+                material Material {
+                  diffuseColor 1 1 0
+                }
+              }
+              geometry Box {
+                size 0.05 0.05 0.05
+              }
+            }
+          ]
+          fieldOfView 0.3
+          width 80
+          height 80
+        }
+      ]
+    }
+  ]
+}
+DEF KKB0 Solid {
+  translation -1 0 0
+  children [
+    DEF BShape Shape {
+      appearance Appearance {
+        material Material {
+          diffuseColor 0 1 0
+        }
+      }
+      geometry Box {
+        size 0.08 0.08 0.08
+      }
+    }
+  ]
+  boundingObject USE BShape
+  physics Physics {
+  }
+}
+DEF KKB1 Solid {
+  translation 2.9999987820200564 0.3190720320255707 -3.6999999549155893
+  rotation 0.00014610289994260327 0.9999910900580523 0.004218821926871097 0.004762989384730731
+  children [
+    DEF BShape Shape {
+      appearance Appearance {
+        material Material {
+          diffuseColor 0 1 0
+        }
+      }
+      geometry Box {
+        size 0.08 0.08 0.08
+      }
+    }
+  ]
+  name "solid(1)"
+  boundingObject USE BShape
+  physics Physics {
+  }
+}
+DEF KKB2 Solid {
+  translation -3 10967.1 4.1
+  rotation -1.0135603650095532e-08 0.9999999999999867 -1.6196350268822634e-07 0.005440818693770963
+  children [
+    DEF BShape Shape {
+      appearance Appearance {
+        material Material {
+          diffuseColor 0 1 0
+        }
+      }
+      geometry Box {
+        size 0.08 0.08 0.08
+      }
+    }
+  ]
+  name "solid(2)"
+  boundingObject USE BShape
+  physics Physics {
+  }
+}
