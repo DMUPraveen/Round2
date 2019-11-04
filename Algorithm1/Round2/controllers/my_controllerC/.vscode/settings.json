@@ -1,0 +1,8 @@
+{
+    "files.associations": {
+        "range_finder.h": "c",
+        "team404_imagerecognition.h": "c",
+        "team404_keyboard_control.h": "c",
+        "keyboard.h": "c"
+    }
+}
