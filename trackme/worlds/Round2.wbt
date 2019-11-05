@@ -1,0 +1,605 @@
+#VRML_SIM R2019b utf8
+WorldInfo {
+  basicTimeStep 16
+  contactProperties [
+    ContactProperties {
+      material1 "InteriorWheelMat"
+      coulombFriction [
+        1.8, 0, 0.2
+      ]
+      frictionRotation -0.9648 0
+      bounce 0
+      forceDependentSlip [
+        10, 0
+      ]
+    }
+    ContactProperties {
+      material1 "ExteriorWheelMat"
+      coulombFriction [
+        1.8, 0, 0.2
+      ]
+      frictionRotation 0.9648 0
+      bounce 0
+      forceDependentSlip [
+        10, 0
+      ]
+    }
+  ]
+}
+Viewpoint {
+  orientation -0.8285462334718482 0.5380868469596869 0.15483437644333378 0.6266575228473499
+  position 0.9743546370850145 2.026507133814184 2.9332241041121234
+  follow "KBOT"
+}
+TexturedBackground {
+}
+TexturedBackgroundLight {
+}
+RectangleArena {
+  floorSize 10 10
+  floorTileSize 1 1
+  wallHeight 0.3
+}
+DEF youbot Youbot {
+  name "KBOT"
+  controller "track_me"
+  supervisor TRUE
+  bodySlot [
+    Display {
+      width 100
+      height 100
+    }
+    DEF TR Transform {
+      translation 0.25 0 0.05
+      rotation 1 0 0 1.572
+      children [
+        RangeFinder {
+          translation 0.04 -0.03 0
+          rotation 0 1 0 -1.572
+          children [
+            Shape {
+              appearance Appearance {
+                material Material {
+                  diffuseColor 1 0 0
+                }
+              }
+              geometry Box {
+                size 0.05 0.05 0.05
+              }
+            }
+          ]
+          fieldOfView 1
+          width 256
+          height 256
+        }
+        Camera {
+          translation 0.04 -0.08000000000000002 0
+          rotation 0 1 0 -1.57
+          children [
+            Shape {
+              appearance Appearance {
+                material Material {
+                  diffuseColor 1 1 0
+                }
+              }
+              geometry Box {
+                size 0.05 0.05 0.05
+              }
+            }
+          ]
+          fieldOfView 0.3
+          width 80
+          height 60
+        }
+      ]
+    }
+  ]
+}
+DEF KKB0 Solid {
+  translation -1 0.042 0
+  children [
+    DEF BShape Shape {
+      appearance Appearance {
+        material Material {
+          diffuseColor 0 1 0
+        }
+      }
+      geometry Box {
+        size 0.08 0.08 0.08
+      }
+    }
+  ]
+  boundingObject USE BShape
+  physics Physics {
+  }
+}
+DEF KKB1 Solid {
+  translation -1 0.042 0.1
+  children [
+    USE BShape
+  ]
+  name "solid(1)"
+  boundingObject USE BShape
+  physics Physics {
+  }
+}
+DEF KKB2 Solid {
+  translation -1 0.042 0.2
+  children [
+    USE BShape
+  ]
+  name "solid(2)"
+  boundingObject USE BShape
+  physics Physics {
+  }
+}
+DEF KKB3 Solid {
+  translation -1 0.042 0.3
+  children [
+    USE BShape
+  ]
+  name "solid(3)"
+  boundingObject USE BShape
+  physics Physics {
+  }
+}
+DEF KKB4 Solid {
+  translation -1 0.042 0.4
+  children [
+    USE BShape
+  ]
+  name "solid(4)"
+  boundingObject USE BShape
+  physics Physics {
+  }
+}
+DEF KKB5 Solid {
+  translation -1 0.042 0.5
+  children [
+    USE BShape
+  ]
+  name "solid(5)"
+  boundingObject USE BShape
+  physics Physics {
+  }
+}
+DEF KKB6 Solid {
+  translation -1 0.042 0.6
+  children [
+    USE BShape
+  ]
+  name "solid(6)"
+  boundingObject USE BShape
+  physics Physics {
+  }
+}
+DEF KKB7 Solid {
+  translation -1 0.042 0.7
+  children [
+    USE BShape
+  ]
+  name "solid(7)"
+  boundingObject USE BShape
+  physics Physics {
+  }
+}
+DEF KKB8 Solid {
+  translation -1 0.042 0.8
+  children [
+    USE BShape
+  ]
+  name "solid(8)"
+  boundingObject USE BShape
+  physics Physics {
+  }
+}
+DEF KKB9 Solid {
+  translation -1 0.042 0.9
+  children [
+    USE BShape
+  ]
+  name "solid(9)"
+  boundingObject USE BShape
+  physics Physics {
+  }
+}
+DEF KKB10 Solid {
+  translation -1 0.042 1
+  children [
+    USE BShape
+  ]
+  name "solid(10)"
+  boundingObject USE BShape
+  physics Physics {
+  }
+}
+DEF KKB11 Solid {
+  translation -1 0.042 1.1
+  children [
+    USE BShape
+  ]
+  name "solid(11)"
+  boundingObject USE BShape
+  physics Physics {
+  }
+}
+DEF KKB12 Solid {
+  translation -1 0.042 1.2
+  children [
+    USE BShape
+  ]
+  name "solid(12)"
+  boundingObject USE BShape
+  physics Physics {
+  }
+}
+DEF KKB13 Solid {
+  translation -1 0.042 1.3
+  children [
+    USE BShape
+  ]
+  name "solid(13)"
+  boundingObject USE BShape
+  physics Physics {
+  }
+}
+DEF KKB14 Solid {
+  translation -1 0.042 1.4
+  children [
+    USE BShape
+  ]
+  name "solid(14)"
+  boundingObject USE BShape
+  physics Physics {
+  }
+}
+DEF KKB15 Solid {
+  translation -1 0.042 1.5
+  children [
+    USE BShape
+  ]
+  name "solid(15)"
+  boundingObject USE BShape
+  physics Physics {
+  }
+}
+DEF KKB16 Solid {
+  translation -1 0.042 1.6
+  children [
+    USE BShape
+  ]
+  name "solid(16)"
+  boundingObject USE BShape
+  physics Physics {
+  }
+}
+DEF KKB17 Solid {
+  translation -1 0.042 1.7
+  children [
+    USE BShape
+  ]
+  name "solid(17)"
+  boundingObject USE BShape
+  physics Physics {
+  }
+}
+DEF KKB18 Solid {
+  translation -1 0.042 1.8
+  children [
+    USE BShape
+  ]
+  name "solid(18)"
+  boundingObject USE BShape
+  physics Physics {
+  }
+}
+DEF KKB19 Solid {
+  translation -1 0.042 1.9
+  children [
+    USE BShape
+  ]
+  name "solid(19)"
+  boundingObject USE BShape
+  physics Physics {
+  }
+}
+DEF KKB20 Solid {
+  translation -1 0.042 2
+  children [
+    USE BShape
+  ]
+  name "solid(20)"
+  boundingObject USE BShape
+  physics Physics {
+  }
+}
+DEF KKB21 Solid {
+  translation -1 0.042 2.1
+  children [
+    USE BShape
+  ]
+  name "solid(21)"
+  boundingObject USE BShape
+  physics Physics {
+  }
+}
+DEF KKB22 Solid {
+  translation -1 0.042 2.2
+  children [
+    USE BShape
+  ]
+  name "solid(22)"
+  boundingObject USE BShape
+  physics Physics {
+  }
+}
+DEF KKB23 Solid {
+  translation -1 0.042 2.3
+  children [
+    USE BShape
+  ]
+  name "solid(23)"
+  boundingObject USE BShape
+  physics Physics {
+  }
+}
+DEF KKB24 Solid {
+  translation -1 0.042 2.4
+  children [
+    USE BShape
+  ]
+  name "solid(24)"
+  boundingObject USE BShape
+  physics Physics {
+  }
+}
+DEF KKB25 Solid {
+  translation -1 0.042 2.5
+  children [
+    USE BShape
+  ]
+  name "solid(25)"
+  boundingObject USE BShape
+  physics Physics {
+  }
+}
+DEF KKB26 Solid {
+  translation -1 0.042 2.6
+  children [
+    USE BShape
+  ]
+  name "solid(26)"
+  boundingObject USE BShape
+  physics Physics {
+  }
+}
+DEF KKB27 Solid {
+  translation -1 0.042 2.7
+  children [
+    USE BShape
+  ]
+  name "solid(27)"
+  boundingObject USE BShape
+  physics Physics {
+  }
+}
+DEF KKB28 Solid {
+  translation -1 0.042 2.8
+  children [
+    USE BShape
+  ]
+  name "solid(28)"
+  boundingObject USE BShape
+  physics Physics {
+  }
+}
+DEF KKB29 Solid {
+  translation -1 0.042 2.9
+  children [
+    USE BShape
+  ]
+  name "solid(29)"
+  boundingObject USE BShape
+  physics Physics {
+  }
+}
+DEF KKB30 Solid {
+  translation -1 0.042 3
+  children [
+    USE BShape
+  ]
+  name "solid(30)"
+  boundingObject USE BShape
+  physics Physics {
+  }
+}
+DEF KKB31 Solid {
+  translation -1 0.042 -0.1
+  children [
+    USE BShape
+  ]
+  name "solid(31)"
+  boundingObject USE BShape
+  physics Physics {
+  }
+}
+DEF KKB32 Solid {
+  translation -1 0.042 -0.2
+  children [
+    USE BShape
+  ]
+  name "solid(32)"
+  boundingObject USE BShape
+  physics Physics {
+  }
+}
+DEF KKB33 Solid {
+  translation -1 0.042 -0.3
+  children [
+    USE BShape
+  ]
+  name "solid(33)"
+  boundingObject USE BShape
+  physics Physics {
+  }
+}
+DEF KKB34 Solid {
+  translation -1 0.042 -0.4
+  children [
+    USE BShape
+  ]
+  name "solid(34)"
+  boundingObject USE BShape
+  physics Physics {
+  }
+}
+DEF KKB35 Solid {
+  translation -1 0.042 -0.5
+  children [
+    USE BShape
+  ]
+  name "solid(35)"
+  boundingObject USE BShape
+  physics Physics {
+  }
+}
+DEF KKB36 Solid {
+  translation -1 0.042 -0.6
+  children [
+    USE BShape
+  ]
+  name "solid(36)"
+  boundingObject USE BShape
+  physics Physics {
+  }
+}
+DEF KKB37 Solid {
+  translation -1 0.042 -0.7
+  children [
+    USE BShape
+  ]
+  name "solid(37)"
+  boundingObject USE BShape
+  physics Physics {
+  }
+}
+DEF KKB38 Solid {
+  translation -1 0.042 -0.8
+  children [
+    USE BShape
+  ]
+  name "solid(38)"
+  boundingObject USE BShape
+  physics Physics {
+  }
+}
+DEF KKB39 Solid {
+  translation -1 0.042 -0.9
+  children [
+    USE BShape
+  ]
+  name "solid(39)"
+  boundingObject USE BShape
+  physics Physics {
+  }
+}
+DEF KKB40 Solid {
+  translation -1 0.042 -1
+  children [
+    USE BShape
+  ]
+  name "solid(40)"
+  boundingObject USE BShape
+  physics Physics {
+  }
+}
+DEF KKB41 Solid {
+  translation -1 0.042 -1.1
+  children [
+    USE BShape
+  ]
+  name "solid(41)"
+  boundingObject USE BShape
+  physics Physics {
+  }
+}
+DEF KKB42 Solid {
+  translation -1 0.042 -1.2
+  children [
+    USE BShape
+  ]
+  name "solid(42)"
+  boundingObject USE BShape
+  physics Physics {
+  }
+}
+DEF KKB43 Solid {
+  translation -1 0.042 -1.3
+  children [
+    USE BShape
+  ]
+  name "solid(43)"
+  boundingObject USE BShape
+  physics Physics {
+  }
+}
+DEF KKB44 Solid {
+  translation -1 0.042 -1.4
+  children [
+    USE BShape
+  ]
+  name "solid(44)"
+  boundingObject USE BShape
+  physics Physics {
+  }
+}
+DEF KKB45 Solid {
+  translation -1 0.042 -1.5
+  children [
+    USE BShape
+  ]
+  name "solid(45)"
+  boundingObject USE BShape
+  physics Physics {
+  }
+}
+DEF KKB46 Solid {
+  translation -1 0.042 -1.6
+  children [
+    USE BShape
+  ]
+  name "solid(46)"
+  boundingObject USE BShape
+  physics Physics {
+  }
+}
+DEF KKB47 Solid {
+  translation -1 0.042 -1.7
+  children [
+    USE BShape
+  ]
+  name "solid(47)"
+  boundingObject USE BShape
+  physics Physics {
+  }
+}
+DEF KKB48 Solid {
+  translation -1 0.042 -1.8
+  children [
+    USE BShape
+  ]
+  name "solid(48)"
+  boundingObject USE BShape
+  physics Physics {
+  }
+}
+DEF KKB49 Solid {
+  translation -1 0.042 -1.9
+  children [
+    USE BShape
+  ]
+  name "solid(49)"
+  boundingObject USE BShape
+  physics Physics {
+  }
+}
