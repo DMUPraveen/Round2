@@ -1,0 +1,8 @@
+{
+    "files.associations": {
+        "team404_keyboard_control.h": "c",
+        "keyboard.h": "c",
+        "math.h": "c",
+        "tracker.h": "c"
+    }
+}
