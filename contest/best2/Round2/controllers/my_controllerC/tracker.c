@@ -1,0 +1,96 @@
+#include "tracker.h"
+#include <math.h>
+#include <webots/robot.h>
+#include <webots/display.h>
+#include "Team404_helper.h"
+#include <base.h>
+#include <stdio.h>
+
+void find_next(float position1[2], float position2[2], float velocity1[2], float velocity2[2], float v, float av)
+{
+    //calculates the position and velocity of the next time step(store them in position2 velocity2) according to the current position and velocity(velocity2,poition2)
+    //printf("help \n");
+    for (int i = 0; i < 2; i++)
+    
+    { //printf("%f \n",v);
+        position2[i] = v * velocity1[i] * T_STEP + position1[i];
+    }
+    velocity2[0] = cos(av * T_STEP) * velocity1[0] - sin(av * T_STEP) * velocity1[1];
+    velocity2[1] = sin(av * T_STEP) * velocity1[0] + cos(av * T_STEP) * velocity1[1];
+    //printf("%f,%f\n",position2[0],position2[1]);
+    //printf("%f,%f\n",velocity2[0],velocity2[1]);
+    
+  
+}
+
+void show_where_I_am(WbDeviceTag Display, float xpos, float ypos, int color, int d_width, int d_height)
+{
+    int w = d_width;
+    int h = d_height;
+    int x = ((xpos) / 10) * w + w / 2;
+    int y = ((ypos) / 10) * h + h / 2;
+    wb_display_set_color(Display, color);
+    wb_display_draw_pixel(Display, x, y);
+}
+
+float get_angle(float vector1[2], float vector2[2])
+{
+    //range is [-pi,pi]
+    float dot_product = vector1[0] * vector2[0] + vector1[1] * vector2[1];
+    float mag_product = magnitude(vector1) * magnitude(vector2);
+    //printf("vector1:%f,%f,vector2:%f,%f",vector1[0],vector1[1],vector2[0],vector2[1]);
+    //float angle =0;
+    //printf("%f\n",mag_product);
+    float value = dot_product / mag_product;
+    float angle=0;
+    if(value <=1 && value >=-1){
+    angle = acos(dot_product / mag_product);
+    }
+    else{
+        angle=0;
+    }
+    //printf("%f,%f,%f \n",dot_product,mag_product,angle);
+    return angle;
+}
+
+float magnitude(float vector[2])
+{
+    return sqrt(vector[0] * vector[0] + vector[1] * vector[1]);
+}
+int turn_left_by(float d_angle, float initial_v_vector[2], float current_vector[2])
+
+{
+    float angle = get_angle(initial_v_vector, current_vector);
+    //printf("%f,%f,%f,%f",initial_v_vector[0],initial_v_vector[1],current_vector[0],current_vector[1]);
+    //printf("%f \n",angle);
+    float r_angle = (d_angle / 180) * M_PI;
+    //printf("%f\n",angle);
+    if (angle <= r_angle)
+    {
+        turn_left();
+        return 0;
+    }
+    else
+    {
+        stop();
+        return 1;
+        printf("done\n");
+    }
+}
+
+void rotate(float* vector1,float* vector2,float av){
+    vector2[0] = cos(av * T_STEP) * vector1[0] - sin(av * T_STEP) * vector1[1];
+    vector2[1] = sin(av * T_STEP) * vector1[0] + cos(av * T_STEP) * vector1[1];
+}
+void rotate_vector(float* vector1,float* vector2,float angle){
+    vector2[0] = (cos(angle))*vector1[0] - (sin(angle))*vector1[1];
+    vector2[1] = (sin(angle))*vector1[0] + (cos(angle))*vector1[1];
+}
+
+int which_way_to_turn(float* c_vector ,float* t_vector){
+    float cross_product =  c_vector[0]*t_vector[1]-c_vector[1]*t_vector[0];
+    int direction = (cross_product > 0) ? 1:-1;
+
+    return direction;
+
+}
